@@ -8,3 +8,9 @@
 </ol>
 
 ### Λειτουργίες ανά σελίδα
+<ul>
+  <li>
+    <h4>Home page</h4>
+<img src='https://user-images.githubusercontent.com/64685186/93820301-ce0fb180-fc11-11ea-905c-1631633bc8dc.png'></img>
+      </li>
+</ul>
