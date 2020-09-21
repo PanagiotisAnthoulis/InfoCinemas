@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo 
+    restart: always
+    container_name: mongo_cont
+    ports: 
+      - 27017:27017
+    volumes:
+      - ./mongodb/data:/data/db
+  flask-service: 
+    build:
+      context: ./flask
+    restart: always
+    container_name: flask_cont
+    depends_on:
+      - mongodb
+    ports:
+      - 8787:5001

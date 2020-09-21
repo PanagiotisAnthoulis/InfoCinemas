@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>DS Cinemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"> 
+    <style>
+
+      *{
+       padding:0;
+       margin: 0;
+       border: border-box;
+      
+   }
+   
+   body {
+      background-image: url('https://g.foolcdn.com/editorial/images/577464/a-full-movie-theater-with-a-blank-screen.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+   
+   }
+   
+   #screen_div{
+      left: 13%;
+      top: 5%;
+      height: 83%;
+   }
+   
+      </style>
+</head>
+<body>
+    <div id="screen_div" class='w-75 position-absolute'>
+        <h1 style="text-shadow: 3px 3px 4px #000; font-family: 'Josefin Sans', sans-serif;" class='text-center'>DS Cinemas</h1>
+        
+        <div style='position: absolute;left: -19px;top: 11px;width: 32%;' class='d-flex justify-content-around align-items-center'>
+            <h3 style='font-style:italic;' class='text-center'>{{logged_user}}</h3>
+            <form method='POST'>
+              <button class='btn btn-danger' name='submit' value='log_out' type='submit'>Log out</button>
+            </form>
+        </div> 
+    
+    <form method="POST" class='w-50 mx-auto p-3 mt-5 d-flex flex-column '>
+        <button class='h2 btn btn-outline-primary mt-4' type="submit" name='choose' value="Insert"><h3>Insert new movie</h3></button> 
+        <button class='h2 btn btn-outline-primary mt-4' type="submit" name='choose' value="Update"><h3>Update movie</h3></button>
+        <button class='h2 btn btn-outline-primary mt-4' type="submit" name='choose' value="Delete"><h3>Delete movie</h3></button>
+        <button class='h2 btn btn-outline-primary mt-4' type="submit" name='choose' value="Admin"><h3>Add Admin</h3></button>
+    </form>
+
+</div>
+</body>
+</html>

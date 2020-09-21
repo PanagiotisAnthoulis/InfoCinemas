@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>DS Cinemas</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"> 
+   <style>
+     enable-shadows:true
+   *{
+    padding:0;
+    margin: 0;
+    border: border-box;
+   
+}
+
+body {
+   background-image: url('https://g.foolcdn.com/editorial/images/577464/a-full-movie-theater-with-a-blank-screen.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100%;
+
+}
+
+#screen_div{
+   left: 13%;
+   top: 5%;
+   height: 83%;
+}
+
+   </style>
+</head>
+<body>
+   
+<div  id="screen_div" class='w-75 position-absolute'>
+   <h1 style="text-shadow: 3px 3px 4px #000; font-family: 'Josefin Sans', sans-serif;" class='text-center'>DS Cinemas</h1>
+      <div class="d-flex justify-content-around align-items-center">
+         <div>
+         <form style='box-shadow: 2px 2px 4px #000000;' class='box-shadow position-relative rounded p-3' method="POST">
+            <h4 class='text_center'>Sign up</h4>
+            <div class='form-group'>
+            {{ form.name.label }}
+            {{ form.name(class_="form-control") }}
+            </div>
+            <div class='form-group'>
+            {{ form.mail.label}}
+            {{ form.mail(class_="form-control") }}
+            </div>
+            <div class='form-group'>
+            {{ form.password.label }}
+            {{ form.password(class_="form-control") }}
+            </div>
+            <br>
+            <input type="submit" name='submit' class='btn btn-primary' value="Signup">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+               {% for category,message in messages %}
+                  {%if category=='sign'%}
+                     <div class='mt-3 alert alert-success'>
+                        {{message}}
+                     </div>
+                  {%elif category=='not_sign'%}
+                     <div class='mt-3 alert alert-danger'>
+                        {{message}}
+                     </div>
+                  {%endif%}
+               {% endfor%}
+            {% endif %}
+         {% endwith %}
+         </form>
+      </div>
+      <div>
+         <form style='box-shadow: 2px 2px 4px #000000;' class='shadow position-relative rounded p-3 mt-3' method="POST">
+            <h4 class='text_center'>Log in</h4>
+            {{ login.log_mail.label }}
+            {{ login.log_mail(class_="form-control") }}<br>
+            {{ login.log_password.label }}
+            {{ login.log_password(class_="form-control") }}<br>
+            <input type="submit" name='submit' class='btn btn-primary' value="Login">
+            {% with messages = get_flashed_messages(category_filter=['danger2']) %}
+            {% if messages %}
+               {% for message in messages %}
+               <div class='mt-3 alert alert-danger'>
+                  {{message}}
+               </div>
+               {% endfor%}
+            {% endif %}
+         {% endwith %}
+         </form>
+      </div>
+      </div>
+</div>
+</body>
+</html>

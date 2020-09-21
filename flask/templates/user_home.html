@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"> 
+    <title>User Home</title>
+    <style>
+    body {
+        background-image: url('https://g.foolcdn.com/editorial/images/577464/a-full-movie-theater-with-a-blank-screen.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+
+    }
+
+    #screen_div{
+    left: 13%;
+    top: 5%;
+    height: 83%;
+    }
+
+    </style>
+</head>
+<body>
+    
+    <div id="screen_div" class='w-75 position-absolute'>
+    
+    <h1 style="text-shadow: 3px 3px 4px #000; font-family: 'Josefin Sans', sans-serif;" class='text-center'>DS Cinemas</h1>
+    
+    <div style='position: absolute;left: -19px;top: 11px;width: 32%;' class='d-flex justify-content-around align-items-center'>
+        <h3 style='font-style:italic;' class='text-center'>{{logged_user}}</h3>
+        <form method='POST'>
+            <button class='btn btn-dark' name='submit' type='submit' value ='history'>My History</button>
+        </form>
+        <form method='POST'>
+          <button class='btn btn-danger' name='submit' value='log_out' type='submit'>Log out</button>
+        </form>
+    </div> 
+
+    <div style='overflow-y: auto; max-height: 64%;' class='w-75 mx-auto border border-primary rounded p-3 mt-3'>
+        
+        <form method="POST">
+            {{searchmovieform.s_movie.label}}
+            {{searchmovieform.s_movie(class_="form-control")}}
+            <input type="submit" class='btn btn-primary mt-3' name='submit' value="Search_movie">
+        </form>
+
+        {% with messages = get_flashed_messages(category_filter=['movie_info']) %}
+            {% if messages %}
+            <table  class=" text-center mx-auto w-75 table table-bordered">
+                <tr><th scope="col">Title</th><th scope="col">Year Realeased</th><th scope="col">Description</th><th scope="col">Screening Date</th><th scope="col">Sits left</th><th scope="col">Press to book</th></tr>
+                {% for message in messages %}    
+                    {%for x in message %}
+                    {% for screens in x.screening_dates %}
+                    <form method="POST">
+                        <tr>
+                            <td>{{x.title}}</td>
+                            {{buyticketform.t_title(value=x.title)}}
+                            <td>{{x.release_date}}</td>
+                            <td>{{x.description}}</td>
+                            <td>{{screens.screening_date}}</td>
+                            {{buyticketform.t_screening_date(value=screens.screening_date)}}
+                            {{buyticketform.t_movie_id(value=x._id)}}
+                            <td>{{screens.sits_left}}</td>
+                            {{buyticketform.t_sits_left(value=screens.sits_left)}}
+                            <td>Sits:{{buyticketform.t_ticket_num}}<button type="submit" class='btn btn-primary mt-1' value='choose_movie' name ="submit">Buy Tickets</button>
+                            </td> 
+                        </tr>
+                    </form>
+                        {% endfor %}
+                    {% endfor %}
+            {% endfor%}
+            </table>
+         {% endif %}
+        {% endwith %}
+
+       
+            {% with messages = get_flashed_messages(category_filter=['invalid']) %}
+            {% if messages %}
+            {% for message in messages %}   
+            <div class='mt-1 alert alert-danger'>
+                {{message}}
+            </div>
+            {% endfor %} 
+            {% endif %}
+            {% endwith %} 
+      
+        
+        <table class=" text-center mx-auto w-50 table table-bordered">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                
+                {% for category,message in messages%}
+                   
+                     {% if category=='title' %}
+                     <tr scope='row'><th>Title</th><th>Screening Date</th><th>Ticket Number</th></tr>
+                     <tr scope='row'>   <td>{{message}}</td>
+                    {% endif  %}
+                    {% if category=='screening_date' %}
+                        <td>{{message}}</td>
+                    {% endif  %}
+                    {% if category=='ticket_num' %}
+                        <td>{{message}}</td>
+                         </tr>
+                        <tr scope='row'>   
+                            <td colspan='3'>
+                                <form method='POST'>
+                                    <button class='btn btn-primary' value='submit_order' name='submit' type="submit">Submit</button>
+                                </form>  
+                            </td> 
+                        </tr> 
+                    {% endif  %}                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </table>
+
+        {% with messages = get_flashed_messages(category_filter=['not_found']) %}
+            {% if messages %}
+                {% for message in messages %} 
+                    <div class='alert alert-danger'>
+                        {{message}}
+                    </div>
+                {% endfor%}
+            {% endif %}
+        {% endwith %}   
+
+        {% with messages = get_flashed_messages(category_filter=['book']) %}
+            {% if messages %}
+                {% for message in messages %} 
+                    <div class='alert alert-success'>
+                        {{message}}
+                    </div>
+                {% endfor%}
+            {% endif %}
+        {% endwith %}   
+
+    </div>
+    </div>
+</body>
+</html>

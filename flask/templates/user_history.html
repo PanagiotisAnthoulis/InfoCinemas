@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"> 
+    <title>DS Cinemas</title>
+    <style>
+        body {
+            background-image: url('https://g.foolcdn.com/editorial/images/577464/a-full-movie-theater-with-a-blank-screen.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+    
+        }
+    
+        #screen_div{
+        left: 13%;
+        top: 5%;
+        height: 83%;
+        }
+    
+        </style>
+</head>
+<body>
+    <div  id="screen_div" class='w-75 position-absolute'>
+        <h1 style="text-shadow: 3px 3px 4px #000; font-family: 'Josefin Sans', sans-serif;" class='text-center'>DS Cinemas</h1>
+        <div style='position: absolute;left: -19px;top: 11px;width: 32%;' class='d-flex justify-content-around align-items-center'>
+            <h3 style='font-style:italic;' class='text-center'>{{logged_user}}</h3>
+            <form method='POST'>
+                <button class='btn btn-dark' name='submit' type='submit' value ='home'>Home</button>
+            </form>
+            <form method='POST'>
+              <button class='btn btn-danger' name='submit' value='log_out' type='submit'>Log out</button>
+            </form>
+        </div> 
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <table  class="border border-primary p-3 text-center mx-auto w-50 table table-bordered">
+                <tr><h2 class='text-center' >My History</h2></tr>
+                <tr scope='row'><th scope="col">Title</th><th scope="col">Sits Booked</th></tr>
+                {% for category,message in messages %}    
+                    {% if category=='movies_seen' %}
+                        {%for x in message %}
+                            <tr scope='row'>
+                                <td>{{x[0]}}</td>
+                                <td>{{x[1]}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan='2'>
+                                <h1>
+                                    {{message}}
+                                </h1>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor%}
+            </table>
+     {% endif %}
+    {% endwith %}   
+        </div>
+</body>
+</html>

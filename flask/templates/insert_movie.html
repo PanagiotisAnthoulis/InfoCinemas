@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet"> 
+    <style>
+  
+      *{
+       padding:0;
+       margin: 0;
+       border: border-box;
+      
+   }
+   
+   body {
+      background-image: url('https://g.foolcdn.com/editorial/images/577464/a-full-movie-theater-with-a-blank-screen.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+   
+   }
+   
+   #screen_div{
+      left: 13%;
+      top: 5%;
+      height: 83%;
+   }
+   .resize{
+            resize:none;
+        }
+      </style>
+
+</head>
+<body>
+    <div id="screen_div" class='w-75 position-absolute'>
+        <h1 style="text-shadow: 3px 3px 4px #000; font-family: 'Josefin Sans', sans-serif;" class='text-center'>DS Cinemas</h1>
+       
+        <div style='position: absolute;left: -19px;top: 11px;width: 32%;' class='d-flex justify-content-around align-items-center'>
+            <h3 style='font-style:italic;' class='text-center'>{{logged_user}}</h3>
+            <form class='d-flex justify-content-md-around' method='POST'>
+                <button class='btn btn-dark' name='submit' value='Home' type='submit'>Home</button>
+              </form>
+            <form method='POST'>
+              <button class='btn btn-danger' name='submit' value='log_out' type='submit'>Log out</button>
+            </form>
+        </div> 
+    
+    <form style='max-height:64%;' class='w-25 mx-auto border border-primary rounded p-3 mt-1' method="POST">
+        <div class="form-group">
+            {{insertmovieform.title.label}}
+            {{insertmovieform.title(class_="form-control")}}          
+        </div>
+
+        <div class="form-group">
+            {{insertmovieform.release_date.label}}
+            {{insertmovieform.release_date(class_="form-control")}}
+            <small id="release_date" class="form-text text-muted">(dd/mm/yyyy)</small>
+        </div>
+        <div class="form-group">
+            {{insertmovieform.description.label}}
+            {{insertmovieform.description(class_="form-control resize")}}
+        </div>
+        <div class="form-group">
+            {{insertmovieform.screening_dates.label}}
+            {{insertmovieform.screening_dates(class_="form-control")}}
+            <small id="screening_dates" class="form-text text-muted">Seperate screening dates with a comma.(dd/mm/yyyy)</small>
+        </div>
+        <div class='d-inline-flex'>
+        <input type="submit" name='submit' class='mr-1 btn btn-primary' value="Insert_movie">
+        {% with messages = get_flashed_messages(category_filter=["insert"]) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class='alert-success'>
+                        {{message}}
+                    </div>
+                {% endfor%}
+            {% endif %}
+        {% endwith %}
+        </div>
+    </form>
+    </div>
+</body>
+</html>
