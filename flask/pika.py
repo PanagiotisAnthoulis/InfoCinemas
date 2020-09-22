@@ -80,6 +80,11 @@ except:
 def sign_up_page():
   
     users=db['users']
+
+    admin=users.find_one({"name":"admin","mail":"admin@mail.com","password":"admin","admin":"yes"})
+
+    if admin is None:
+        users.insert_one({"name":"admin","mail":"admin@mail.com","password":"admin","admin":"yes"})
     
     form=SignupForm()
     login=LoginForm()
