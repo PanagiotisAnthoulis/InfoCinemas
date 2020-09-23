@@ -15,4 +15,4 @@ RUN pip3 install Flask-Pymongo
 WORKDIR /app
 COPY . /app
 ENTRYPOINT ["python3"]
-CMD ["pika.py"]
+CMD ["app.py"]
