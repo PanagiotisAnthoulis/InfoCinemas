@@ -15,7 +15,7 @@
 <ul>
   <li>
      <h3>Home page</h3>
-      Funtcions: Sign up,Log in
+      Functions: Sign up,Log in
       <img src='Screenshots/home_page.png'></img> 
       <h4>User Sign up</h4>
       <h5>User/Admin inserts Name,E-mail,Password to Sign up.</h5>
@@ -25,7 +25,7 @@
       <h4>User/Admin Log in</h4>
       <h5>User/Admin inserts their credentials to log in the system.</h5>
       <img src='Screenshots/user_log_in.png'></img>    
-      <h4>User/Admin Log in (In case of wrong credentials.</h4>
+      <h4>User/Admin Log in (In case of wrong credentials).</h4>
       <img src='Screenshots/user_log_in_fail.png'></img> 
     </li>
     <li>
