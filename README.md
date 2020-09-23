@@ -8,9 +8,14 @@
   </li>
 </ul>
   </li>
-  
   <li>Open up your web browser and type in the search bar: "localhost:8787"</li>
 </ol>
+  <h4>Default Admin</h4>
+  
+| Name  | E-mail | Password     |
+| ------------- | ------------- |---|
+| admin  | admin@mail.com  | admin |
+   
 <h3> Functions per page</h3>
 <ul>
   <li>
