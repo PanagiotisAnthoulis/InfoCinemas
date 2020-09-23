@@ -2,9 +2,9 @@
 
 ### Εγκατάσταση
 <ol>
-  <li>Open up Terminal and run the following commands:<ul><li> git pull https://github.com/PanagiotisAnthoulis/InfoCinemas2020_E17015_Anthoulis_Panagiotis.git</li>
+  <li>Open up Terminal and run the following commands:<ul><li> git clone https://github.com/PanagiotisAnthoulis/InfoCinemas2020_E17015_Anthoulis_Panagiotis.git</li>
   <li>
-  sudo docker-compose up
+  (sudo) docker-compose up
   </li>
 </ul>
   </li>
