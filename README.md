@@ -15,7 +15,14 @@
 | Name  | E-mail | Password     |
 | ------------- | ------------- |---|
 | admin  | admin@mail.com  | admin |
-   
+
+<h4>Mongodb Data</h4>
+<ul>
+  <li><h5>Single Users:{"name":user_name,"password":user_password,"mail":user_mail,"movies_seen":[],"admin":"no"}</h5></li>
+  <li><h5>Admin Users:{"name":user_name,"password":user_password,"mail":user_mail,"admin":"yes"}</h5></li>
+  <li><h5>Movies:{"title":movie_title,"release_date":movie_release,"desc":movie_description,<br>"
+    screenings":["screening":["sits_left":*int*,"screening_date":*date*],"screening"::["sits_left"...]]}</h5></li>
+  </ul>
 <h3> Functions per page</h3>
 <ul>
   <li>
