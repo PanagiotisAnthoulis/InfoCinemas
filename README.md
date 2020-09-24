@@ -1,5 +1,7 @@
 # InfoCinemas2020_E17015_Anthoulis_Panagiotis
-
+  
+## A Cinema Management application which stores movies and users.
+  
 ### Installation
 <ol>
   <li>Open up Terminal and run the following commands:<ul><li> git clone https://github.com/PanagiotisAnthoulis/InfoCinemas2020_E17015_Anthoulis_Panagiotis.git</li>
