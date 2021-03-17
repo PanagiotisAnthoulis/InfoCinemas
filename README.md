@@ -1,4 +1,4 @@
-# InfoCinemas2020_E17015_Anthoulis_Panagiotis
+# InfoCinemas
   
 ## A Cinema Management application which stores movies and users.
   
